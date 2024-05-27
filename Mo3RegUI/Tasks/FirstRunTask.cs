@@ -9,7 +9,7 @@ namespace Mo3RegUI.Tasks
     }
     public class FirstRunTask : ITask
     {
-        public string Description => "关闭首次运行对话框";
+        public string Description => "Отключение диалогового окна первого запуска";
         public event EventHandler<TaskMessageEventArgs> ReportMessage;
 
         public void DoWork(ITaskParameter p)

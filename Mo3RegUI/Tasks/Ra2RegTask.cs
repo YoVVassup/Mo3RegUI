@@ -11,7 +11,7 @@ namespace Mo3RegUI.Tasks
     }
     public class Ra2RegTask : ITask
     {
-        public string Description => "注册 Red Alert 2";
+        public string Description => "Регистрация Red Alert 2";
         public event EventHandler<TaskMessageEventArgs> ReportMessage;
 
         public void DoWork(ITaskParameter p)
@@ -50,7 +50,7 @@ namespace Mo3RegUI.Tasks
             yrKey.SetValue("SKU", 10496);
             yrKey.SetValue("Version", 65537);
 
-            ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Info, Text = "写入注册表成功。" });
+            ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Info, Text = "Запись в реестр завершилась успешно." });
 
             string blowfishPath = Path.Combine(p.GameDir, "Blowfish.dll");
             // Register blowfish
@@ -58,7 +58,7 @@ namespace Mo3RegUI.Tasks
 
             if (!File.Exists(blowfishPath))
             {
-                throw new Exception("找不到 Blowfish.dll 文件。");
+                throw new Exception("Файл Blowfish.dll не удалось найти.");
             }
 
             ConsoleCommandManager.RunConsoleCommand("regsvr32.exe", $"/s \"{blowfishPath}\"", out int exitCode, out string stdOut, out string stdErr);
@@ -75,12 +75,12 @@ namespace Mo3RegUI.Tasks
 
             if (exitCode != 0)
             {
-                string message = $"进程返回值 {exitCode}。执行失败。";
+                string message = $"Процесс возвращает значение {exitCode}. Выполнение не удалось.";
                 ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Error, Text = message });
             }
             else
             {
-                ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Info, Text = "注册 Blowfish.dll 成功。" });
+                ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Info, Text = "Регистрация Blowfish.dll прошла успешно." });
             }
         }
 

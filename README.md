@@ -1,13 +1,14 @@
-# MO 注册机
+# Mental Omega Регистратор 
 
-包含在心灵终结整合包内的游戏环境自动配置、诊断工具。稍作改动即可适用于其他同样基于 [xna-cncnet-client](https://github.com/CnCNet/xna-cncnet-client/) 的红警 2 / Ares / Phobos 游戏 Mod。
+Автоматизированный инструмент для настройки и диагностики игрового окружения, входящий в состав Mental Omega Integration Pack. Может быть адаптирован для других игровых модов Red Alert 2 / Ares / Phobos, также основанных на [xna-cncnet-client](https://github.com/CnCNet/xna-cncnet-client/).
 
 ![The program screenshot](screenshot.png)
 
-## 许可协议
+## Лицензионное соглашение
 
-本项目以 GPL v3.0 协议开源。简言之：不得移除作者信息、衍生版必须使用相同协议开源、作者无责。上述语句只为方便理解之用，以[协议全文](./LICENSE)为准。
+Этот проект имеет открытый исходный код под лицензией GPL v3.0. Вкратце: информация об авторе не может быть удалена, производные работы должны быть открыты под той же лицензией, и автор не несет ответственности. Приведенные выше утверждения предназначены только для облегчения понимания и основаны на [полном тексте соглашения](./LICENSE).
 
-## Localization
+## Локализация
 
-Implementing multi-language support is encouraged. Feel free to make a pull request.
+[Оригинальная работа](https://github.com/SadPencil/Mo3RegUI) за авторством SadPencil (伤心的笔), перевод на русский YoWassup.
+

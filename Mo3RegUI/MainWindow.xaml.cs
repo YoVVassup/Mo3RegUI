@@ -42,8 +42,8 @@ namespace Mo3RegUI
                 if (!File.Exists(exePath))
                 {
                     MessageBox.Show(this,
-                        $"{Constants.AppName} 可能不在游戏目录。请确保将 {Constants.AppName} 的文件复制到游戏目录后再执行。找不到 {exePath} 文件。",
-                        "错误", MessageBoxButton.OK, MessageBoxImage.Error);
+                        $"Отсутствуют оригинальные файлы в директории игры.\n Не удалось найти файл {exePath}.\n Убедитесь, что этот файл находится по указанному пути.",
+                        "Внимание!", MessageBoxButton.OK, MessageBoxImage.Error);
                     Environment.Exit(1);
                     return;
                 }
@@ -95,11 +95,11 @@ namespace Mo3RegUI
                 if (waitCount == 0)
                 {
                     this.Title = $"{Constants.AppName}";
-                    MessageBox.Show(this, "执行完毕。请仔细阅读深红色的警告和错误文字，再关闭此窗口。", "执行完毕", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show(this, "Обработка завершена. Пожалуйста, если таковой имеется - внимательно прочитайте темно-красный текст, который содержит предупреждения и ошибки обработки.", "Инфо", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
-                    this.Title = $"{Constants.AppName} [ 剩余任务: {waitCount} ]";
+                    this.Title = $"{Constants.AppName} [ Оставшиеся задачи: {waitCount} ]";
                 }
             };
             this.mainTaskManager.RunAsync();
@@ -110,8 +110,8 @@ namespace Mo3RegUI
             if ((this.mainTaskManager?.WaitCount).GetValueOrDefault() > 0)
             {
                 var ret = MessageBox.Show(this,
-                    $"{Constants.AppName} 正在设置兼容性和配置游戏选项，且尚未运行完毕。确定要中止注册机的运行吗？",
-                    "警告", MessageBoxButton.YesNoCancel, MessageBoxImage.Exclamation, MessageBoxResult.No);
+                    $"{Constants.AppName} Параметры совместимости и конфигурации игры находятся в процессе установки и еще не завершены. Вы уверены, что хотите прервать выполнение?",
+                    "Предупреждение", MessageBoxButton.YesNoCancel, MessageBoxImage.Exclamation, MessageBoxResult.No);
                 if (ret != MessageBoxResult.Yes)
                 {
                     e.Cancel = true;

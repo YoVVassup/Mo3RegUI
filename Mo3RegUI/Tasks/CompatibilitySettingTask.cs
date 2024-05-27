@@ -11,7 +11,7 @@ namespace Mo3RegUI.Tasks
     }
     public class CompatibilitySettingTask : ITask
     {
-        public string Description => "设置程序兼容性";
+        public string Description => "Настройка режимов совместимости программ";
         public event EventHandler<TaskMessageEventArgs> ReportMessage;
 
         public void DoWork(ITaskParameter p)

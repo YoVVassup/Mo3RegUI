@@ -11,7 +11,7 @@ namespace Mo3RegUI.Tasks
     }
     public class FirewallSettingTask : ITask
     {
-        public string Description => "设置防火墙例外项";
+        public string Description => "Настройка исключений для межсетевого экрана";
         public event EventHandler<TaskMessageEventArgs> ReportMessage;
 
         public void DoWork(ITaskParameter p)
@@ -29,7 +29,7 @@ namespace Mo3RegUI.Tasks
                 ReportMessage(this, new TaskMessageEventArgs()
                 {
                     Level = MessageLevel.Error,
-                    Text = "Windows 版本过低。请手动设置 Windows 防火墙。",
+                    Text = "Версия Windows слишком стара. Пожалуйста, настройте сетевой экран Windows вручную.",
                 });
                 return;
             }
@@ -64,7 +64,7 @@ namespace Mo3RegUI.Tasks
 
                 if (exitCode != 0)
                 {
-                    string message = $"进程返回值 {exitCode}。执行失败。";
+                    string message = $"Процесс возвращает значение {exitCode}. Выполнение не удалось.";
                     ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Error, Text = message });
                 }
             }

@@ -10,7 +10,7 @@ namespace Mo3RegUI.Tasks
     }
     public class NetworkInterfaceTask : ITask
     {
-        public string Description => "检查网络环境";
+        public string Description => "Проверка сетевого окружения";
         public event EventHandler<TaskMessageEventArgs> ReportMessage;
 
         public void DoWork(ITaskParameter p)
@@ -59,7 +59,7 @@ namespace Mo3RegUI.Tasks
                     }
                 }
 
-                ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Warning, Text = "您的电脑有多张网卡，列表如下。您可能无法在局域网联机大厅中看到其他玩家。要规避这个问题，请在局域网联机时临时禁用其他网卡，仅保留连接到局域网的网卡。" + ips });
+                ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Warning, Text = "На вашем компьютере установлено несколько сетевых карт, перечисленных ниже. Вы можете не видеть других игроков в сетевом лобби в LAN. Чтобы обойти эту проблему, временно отключите другие сетевые карты при подключении к LAN и оставьте только сетевую карту, подключенную к LAN." + ips });
             }
         }
     }

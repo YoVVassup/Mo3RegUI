@@ -9,7 +9,7 @@ namespace Mo3RegUI.Tasks
     }
     public class RemoveObsoleteFilesTask : ITask
     {
-        public string Description => "删除多余文件";
+        public string Description => "Удаление лишних файлов";
         public event EventHandler<TaskMessageEventArgs> ReportMessage;
 
         public void DoWork(ITaskParameter p)

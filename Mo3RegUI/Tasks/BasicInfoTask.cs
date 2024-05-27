@@ -8,7 +8,7 @@ namespace Mo3RegUI.Tasks
     }
     public class BasicInfoTask : ITask
     {
-        public string Description => "检查系统基本信息";
+        public string Description => "Проверка основной информации о системе";
         public event EventHandler<TaskMessageEventArgs> ReportMessage;
 
         public void DoWork(ITaskParameter p)
@@ -27,18 +27,18 @@ namespace Mo3RegUI.Tasks
             ReportMessage(this, new TaskMessageEventArgs()
             {
                 Level = MessageLevel.Info,
-                Text = "操作系统: " + computerInfo.OSFullName + " " + computerInfo.OSVersion
+                Text = "Операционная система: " + computerInfo.OSFullName + " " + computerInfo.OSVersion
             });
             ReportMessage(this, new TaskMessageEventArgs()
             {
                 Level = MessageLevel.Info,
-                Text = "当前 ANSI 代码页: " + codepage.ToString()
+                Text = "Текущая кодировка ANSI: " + codepage.ToString()
             });
             ReportMessage(this, new TaskMessageEventArgs()
             {
                 Level = MessageLevel.Info,
                 Text = string.Format(
-                    "物理内存: 总计: {0:0.##} GB，可用: {1:0.##} GB",
+                    "Оперативная память: всего: {0:0.##} GB，доступно: {1:0.##} GB",
                     ((double)computerInfo.TotalPhysicalMemory) / 1024 / 1024 / 1024,
                     ((double)computerInfo.AvailablePhysicalMemory) / 1024 / 1024 / 1024),
             });

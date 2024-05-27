@@ -9,7 +9,7 @@ namespace Mo3RegUI.Tasks
     }
     public class RuntimeComponentTask : ITask
     {
-        public string Description => "检查运行时组件";
+        public string Description => "Проверка компонентов среды системы";
         public event EventHandler<TaskMessageEventArgs> ReportMessage;
 
         public void DoWork(ITaskParameter p)
@@ -42,7 +42,7 @@ namespace Mo3RegUI.Tasks
                 ReportMessage(this, new TaskMessageEventArgs()
                 {
                     Level = MessageLevel.Info,
-                    Text = ".NET Framework 3.5 未安装。", // don't treat this as an error
+                    Text = ".NET Framework 3.5 не установлен.", // don't treat this as an error
                 });
             }
             else
@@ -50,7 +50,7 @@ namespace Mo3RegUI.Tasks
                 ReportMessage(this, new TaskMessageEventArgs()
                 {
                     Level = MessageLevel.Info,
-                    Text = ".NET Framework " + net35 + " 已安装。",
+                    Text = ".NET Framework " + net35 + " установлен.",
                 });
             }
 
@@ -60,7 +60,7 @@ namespace Mo3RegUI.Tasks
                 ReportMessage(this, new TaskMessageEventArgs()
                 {
                     Level = MessageLevel.Error,
-                    Text = ".NET Framework 4 未安装。",
+                    Text = ".NET Framework 4 не установлен.",
                 });
             }
             else
@@ -68,7 +68,7 @@ namespace Mo3RegUI.Tasks
                 ReportMessage(this, new TaskMessageEventArgs()
                 {
                     Level = MessageLevel.Info,
-                    Text = ".NET Framework " + net4 + " 已安装。",
+                    Text = ".NET Framework " + net4 + " установлен.",
                 });
             }
 
@@ -80,7 +80,7 @@ namespace Mo3RegUI.Tasks
                 ReportMessage(this, new TaskMessageEventArgs()
                 {
                     Level = MessageLevel.Error,
-                    Text = "当前 .NET Framework 4 的版本号低于 4.5。",
+                    Text = "Текущий номер версии .NET Framework 4 не соответствует версии 4.5.",
                 });
             }
 
@@ -94,7 +94,7 @@ namespace Mo3RegUI.Tasks
                 ReportMessage(this, new TaskMessageEventArgs()
                 {
                     Level = MessageLevel.Info,
-                    Text = "XNA Framework 4.0 已安装。",
+                    Text = "XNA Framework 4.0 установлен.",
                 });
             }
             else
@@ -102,7 +102,7 @@ namespace Mo3RegUI.Tasks
                 ReportMessage(this, new TaskMessageEventArgs()
                 {
                     Level = (Environment.OSVersion.Version.Major < 6) ? MessageLevel.Error : MessageLevel.Info, // Future: Always prompt as Info for MO 3.3.7
-                    Text = "XNA Framework 4.0 未安装。",
+                    Text = "XNA Framework 4.0 не установлен.",
                 });
             }
 
@@ -113,7 +113,7 @@ namespace Mo3RegUI.Tasks
                     ReportMessage(this, new TaskMessageEventArgs()
                     {
                         Level = MessageLevel.Error,
-                        Text = "当前 .NET Framework 4 的版本号低于 4.5，且 XNA Framework 4.0 未安装。客户端可能无法正常运行。",
+                        Text = "Текущий номер версии .NET Framework 4 не соответствует версии 4.5, а XNA Framework 4.0 не установлен. Клиент может работать некорректно.",
                     });
                 }
             }

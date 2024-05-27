@@ -32,17 +32,17 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Image Source="soviet.png" Height="22" VerticalAlignment="Center"/>
-                <TextBlock Margin="5" Text="{x:Static local:Constants.AppName}" FontSize="22"  VerticalAlignment="Bottom"/>
+                <TextBlock Margin="5" Text="{x:Static local:Constants.AppName}" FontSize="20"  VerticalAlignment="Bottom"/>
                 <TextBlock Margin="5" Text="{x:Static local:Constants.Version}" FontSize="20"  VerticalAlignment="Bottom"/>
 
-                <TextBlock Margin="5" VerticalAlignment="Bottom" FontSize="20">By:</TextBlock>
-                <TextBlock Margin="5" Text="{x:Static local:Constants.AuthorName}" FontSize="20" VerticalAlignment="Bottom"/>
-
+                <TextBlock Margin="5" VerticalAlignment="Bottom" FontSize="12">Автор:</TextBlock>
+                <TextBlock Margin="5" Text="{x:Static local:Constants.AuthorName}" FontSize="12" VerticalAlignment="Bottom"/>
+                <TextBlock Margin="5" VerticalAlignment="Bottom" FontSize="12">Перевод: YoWassup</TextBlock>
             </StackPanel>
             <Button x:Name="GitHubUrlButton" Grid.Column="1" Margin="5" FontSize="14" VerticalAlignment="Bottom" Click="GitHubUrlButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Margin="2" Source="github-mark.png" Height="22" VerticalAlignment="Center"></Image>
-                    <Label Margin="0">在 GitHub 上查看</Label>
+                    <Label Margin="0">Посетить GitHub</Label>
                 </StackPanel>
             </Button>
         </Grid>
@@ -62,8 +62,8 @@
                                             <Expander.Header>
                                                 <DockPanel>
                                                     <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="Black" FontSize="18" VerticalAlignment="Bottom" />
-                                                    <TextBlock Text="{Binding ItemCount}" FontSize="18" Foreground="Green" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Bottom" />
-                                                    <TextBlock Text=" 条消息" FontSize="18" Foreground="DarkGray" VerticalAlignment="Bottom" />
+                                                    <TextBlock Text="{Binding ItemCount}" FontSize="12" Foreground="Green" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Bottom" />
+                                                    <TextBlock Text=" сообщение(-я)" FontSize="12" Foreground="DarkGray" VerticalAlignment="Bottom" />
                                                 </DockPanel>
                                             </Expander.Header>
                                             <Expander.Content>

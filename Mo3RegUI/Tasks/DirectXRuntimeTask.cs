@@ -9,7 +9,7 @@ namespace Mo3RegUI.Tasks
     }
     public class DirectXRuntimeTask : ITask
     {
-        public string Description => "检查 DirectX 运行时（2010 年 6 月）";
+        public string Description => "Проверка версии DirectX Runtime (June 2010)";
         public event EventHandler<TaskMessageEventArgs> ReportMessage;
 
         public void DoWork(ITaskParameter p)
@@ -48,7 +48,7 @@ namespace Mo3RegUI.Tasks
                 {
                     if (!File.Exists(Path.Combine(sysFolder, dllName)))
                     {
-                        throw new Exception($"DirectX 运行时组件未安装。找不到 {dllName} 文件。请安装 DirectX End-User Runtimes (June 2010) 。");
+                        throw new Exception($"Компонент DirectX Runtime не установлен. Файл {dllName} не найден. Пожалуйста, установите DirectX Runtimes (June 2010).");
                     }
                 }
             }

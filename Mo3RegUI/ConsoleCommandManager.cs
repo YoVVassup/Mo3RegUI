@@ -1,4 +1,6 @@
-﻿namespace Mo3RegUI
+﻿using System.Text;
+
+namespace Mo3RegUI
 {
     public static class ConsoleCommandManager
     {
@@ -17,9 +19,11 @@
                     CreateNoWindow = true,
                 }
             };
+            process.StartInfo.StandardOutputEncoding = Encoding.GetEncoding("CP866");
+            
             _ = process.Start();
             process.WaitForExit();
-
+            
             stdOut = process.StandardOutput.ReadToEnd();
             stdErr = process.StandardError.ReadToEnd();
             exitCode = process.ExitCode;

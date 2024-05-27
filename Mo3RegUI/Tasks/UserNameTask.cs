@@ -12,7 +12,7 @@ namespace Mo3RegUI.Tasks
     }
     public class UserNameTask : ITask
     {
-        public string Description => "设置游戏用户名";
+        public string Description => "Установка никнейма игрока";
         public event EventHandler<TaskMessageEventArgs> ReportMessage;
 
         public void DoWork(ITaskParameter p)
@@ -45,7 +45,7 @@ namespace Mo3RegUI.Tasks
                         ReportMessage(this, new TaskMessageEventArgs()
                         {
                             Level = MessageLevel.Warning,
-                            Text = "注意，当前玩家昵称 \"" + username + "\" 包含非 ASCII 字符。如果玩家昵称完全不包含任何 ASCII 字符，Ares 3.0 等引擎将会崩溃。",
+                            Text = "Обратите внимание, что текущий никнейм игрока \"" + username + "\" не содержит ASCII символы. Движки, такие как Ares 3.0, аварийно завершают работу, если ник игрока не будет содержать никаких ASCII-символов.",
                         });
                     }
 
@@ -64,7 +64,7 @@ namespace Mo3RegUI.Tasks
                     ReportMessage(this, new TaskMessageEventArgs()
                     {
                         Level = MessageLevel.Info,
-                        Text = "将玩家昵称设置为 \"" + username + "\"。",
+                        Text = "Установлен никнейма игрока на \"" + username + "\".",
                     });
                 });
             }

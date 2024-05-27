@@ -11,7 +11,7 @@ namespace Mo3RegUI.Tasks
     }
     public class ResolutionTask : ITask
     {
-        public string Description => "设置分辨率";
+        public string Description => "Установка разрешения";
         public event EventHandler<TaskMessageEventArgs> ReportMessage;
 
         public void DoWork(ITaskParameter p)
@@ -34,7 +34,7 @@ namespace Mo3RegUI.Tasks
                     videoSection["ScreenHeight"] = Resolution.Height.ToString(CultureInfo.InvariantCulture);
                 });
             }
-            ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Info, Text = "设置游戏分辨率为 " + Resolution.Width.ToString() + "×" + Resolution.Height.ToString() + "。" });
+            ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Info, Text = "Установка разрешение игры на " + Resolution.Width.ToString() + "×" + Resolution.Height.ToString() + "." });
         }
 
         private struct Resolution

@@ -11,7 +11,7 @@ namespace Mo3RegUI.Tasks
     }
     public class ForegroundLockTimeoutTask : ITask
     {
-        public string Description => "检查前台锁定时间";
+        public string Description => "Проверка длительности блокировки переднего плана";
         public event EventHandler<TaskMessageEventArgs> ReportMessage;
 
         public void DoWork(ITaskParameter p)
@@ -31,13 +31,13 @@ namespace Mo3RegUI.Tasks
             int valDefault = 0x30d40;
             if (valDword >= valDefault)
             {
-                ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Info, Text = $"前台锁定时间不低于 {valDefault} 毫秒。无需操作。" });
+                ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Info, Text = $"Блокировка переднего плана происходит не менее чем на {valDefault} миллисекунд. Никаких действий не требуется." });
             }
             else
             {
-                ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Warning, Text = $"前台锁定时间低于 {valDefault} 毫秒，有概率导致游戏中返回桌面的情况发生。正在修复……" });
+                ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Warning, Text = $"Блокировка переднего плана состовляет {valDefault} миллисекунд, что может привести к возврату на рабочий стол в игре. Это исправимо ..." });
                 key.SetValue("ForegroundLockTimeout", valDefault, RegistryValueKind.DWord);
-                ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Info, Text = $"修复成功。前台锁定时间修改为 {valDefault} 毫秒。" });
+                ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Info, Text = $"Задержка успешно устранена. Время блокировки переднего плана изменено на {valDefault} миллисекунд." });
             }
         }
 

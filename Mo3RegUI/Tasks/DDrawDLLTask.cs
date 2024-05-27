@@ -9,7 +9,7 @@ namespace Mo3RegUI.Tasks
     }
     public class DDrawDLLTask : ITask
     {
-        public string Description => "检查渲染补丁注册表项";
+        public string Description => "Проверка реестра на наличие патча рендеринга";
         public event EventHandler<TaskMessageEventArgs> ReportMessage;
 
         public void DoWork(ITaskParameter p)
@@ -29,11 +29,11 @@ namespace Mo3RegUI.Tasks
                 object dllItem = registryKey.GetValue(dllName);
                 if (dllItem is not null)
                 {
-                    ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Warning, Text = $"{dllName} 注册表项异常。{dllName} 不应属于 KnownDLLs。" });
+                    ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Warning, Text = $"{dllName} удалена из реестра. {dllName} не должна присутствовать в составе KnownDLLs." });
                 }
                 else
                 {
-                    ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Info, Text = $"{dllName} 注册表项正常。" });
+                    ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Info, Text = $"{dllName} записи в реестре соответствуют правилам." });
                 }
             }
             using (var registryKey = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Session Manager", true))
@@ -49,7 +49,7 @@ namespace Mo3RegUI.Tasks
                 var exclusiveDllsKind = registryKey.GetValueKind("ExcludeFromKnownDlls");
                 if (exclusiveDllsKind != RegistryValueKind.MultiString)
                 {
-                    throw new Exception($"ExcludeFromKnownDlls 应为 {RegistryValueKind.MultiString} 类型，实际为 {exclusiveDllsKind}。");
+                    throw new Exception($"ExcludeFromKnownDlls должен иметь тип {RegistryValueKind.MultiString} который, на самом деле, является {exclusiveDllsKind}.");
                     //string message = $"ExcludeFromKnownDlls 应为 {RegistryValueKind.MultiString} 类型，实际为 {exclusiveDllsKind}。";
                     //ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Critical, Text = message });
                     //return; // throw new Exception(message);
@@ -62,7 +62,7 @@ namespace Mo3RegUI.Tasks
                 }
 
                 registryKey.SetValue(keyName, exclusiveDllsArray.ToArray(), RegistryValueKind.MultiString);
-                ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Info, Text = $"成功将 {dllName} 加入 ExcludeFromKnownDlls。" });
+                ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Info, Text = $"Успешно добавлена {dllName} в ExcludeFromKnownDlls." });
             }
         }
     }

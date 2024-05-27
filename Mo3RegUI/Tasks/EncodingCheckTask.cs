@@ -8,7 +8,7 @@ namespace Mo3RegUI.Tasks
     }
     public class EncodingCheckTask : ITask
     {
-        public string Description => "检查系统 ANSI 代码页";
+        public string Description => "Проверка кодировки ANSI системы";
 
         public event EventHandler<TaskMessageEventArgs> ReportMessage;
 
@@ -25,7 +25,7 @@ namespace Mo3RegUI.Tasks
             uint codepage = NativeMethods.GetACP();
             if (codepage == 65001)
             {
-                string message = "当前 ANSI 代码页为 UTF-8。这是一个好做法，但不幸的是，红警 2 游戏中将无法正常输入非英文字符，地图编辑器等组件将无法完全显示包含非英文字符的名称。此外，这是影响高 DPI 下游戏菜单界面是否出现按钮错位、重叠问题的因素之一。";
+                string message = "Текущая кодировка ANSI - UTF-8. Это хороший вариант, но, к сожалению, неанглийские символы не будут правильно набираться в Mental Omega, и такие компоненты, как редактор карт, не смогут полностью отображать имена, содержащие неанглийские символы. Кроме того, это один из факторов, влияющих на то, будет ли интерфейс меню игры иметь искажения и наложение кнопок при высоком DPI.";
                 ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Warning, Text = message });
             }
         }

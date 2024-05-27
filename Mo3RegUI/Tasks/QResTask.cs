@@ -10,7 +10,7 @@ namespace Mo3RegUI.Tasks
     }
     public class QResTask : ITask
     {
-        public string Description => "检查 QRes 高 DPI 缩放问题";
+        public string Description => "Проверка проблем масштабирования QRes с высоким DPI";
         public event EventHandler<TaskMessageEventArgs> ReportMessage;
 
         public void DoWork(ITaskParameter p)
@@ -35,7 +35,7 @@ namespace Mo3RegUI.Tasks
                     ReportMessage(this, new TaskMessageEventArgs()
                     {
                         Level = MessageLevel.Warning,
-                        Text = "检测到未修复的 QRes。在不使用渲染补丁或使用古老的渲染补丁时，在高 DPI 显示器下以窗口化模式运行游戏可能会出现分辨率错误或“Screen mode not found”的错误提示。建议更新 qres.dat 程序或尽可能使用现代的渲染补丁。",
+                        Text = "Обнаружен неисправленный QRes, запуск игры в оконном режиме на мониторе с высоким DPI может привести к ошибке разрешения или ошибке «Screen mode not found», если не используется патч рендеринга или используется старый патч рендеринга. Рекомендуется обновить файл qres.dat или использовать современный патч рендеринга, если это возможно.",
                     });
 
                 }
@@ -45,7 +45,7 @@ namespace Mo3RegUI.Tasks
                 ReportMessage(this, new TaskMessageEventArgs()
                 {
                     Level = MessageLevel.Warning,
-                    Text = "检测 QRes 失败。" + ex.Message + "在不使用渲染补丁或使用古老的渲染补丁时，以窗口化模式运行游戏可能会出现问题。建议更新 qres.dat 程序或尽可能使用现代的渲染补丁。",
+                    Text = "Проверка QRes не удалась. " + ex.Message + " Запуск игры в оконном режиме может вызвать проблемы, если не используется патч рендеринга или используется древний патч рендеринга. Рекомендуется обновить файл qres.dat или использовать современный патч рендеринга, если это возможно.",
                 });
 
             }

@@ -10,7 +10,7 @@ namespace Mo3RegUI.Tasks
     }
     public class ChinaNetworkTask : ITask
     {
-        public string Description => "关闭 Discord 功能";
+        public string Description => "Отключение использования Discord";
         public event EventHandler<TaskMessageEventArgs> ReportMessage;
 
         public void DoWork(ITaskParameter p)
@@ -23,7 +23,7 @@ namespace Mo3RegUI.Tasks
         }
         private void _DoWork(ChinaNetworkTaskParameter p)
         {
-            if (RegionInfo.CurrentRegion.ThreeLetterISORegionName == "CHN")
+            if (RegionInfo.CurrentRegion.ThreeLetterISORegionName == "RU")
             {
                 lock (Locks.RA2MO_INI)
                 {
@@ -36,7 +36,7 @@ namespace Mo3RegUI.Tasks
                 ReportMessage(this, new TaskMessageEventArgs()
                 {
                     Level = MessageLevel.Info,
-                    Text = "成功关闭 Discord 功能。",
+                    Text = "Discord успешно отключен.",
                 });
             }
             else
@@ -44,7 +44,7 @@ namespace Mo3RegUI.Tasks
                 ReportMessage(this, new TaskMessageEventArgs()
                 {
                     Level = MessageLevel.Info,
-                    Text = "不关闭 Discord 功能。",
+                    Text = "Не удалось отключить Discord.",
                 });
             }
         }

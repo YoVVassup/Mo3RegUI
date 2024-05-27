@@ -12,7 +12,7 @@ namespace Mo3RegUI.Tasks
     }
     public class AffinityTask : ITask
     {
-        public string Description => "设置多核 CPU 相关性";
+        public string Description => "Настройка многоядерных CPU";
         public event EventHandler<TaskMessageEventArgs> ReportMessage;
 
         public void DoWork(ITaskParameter p)

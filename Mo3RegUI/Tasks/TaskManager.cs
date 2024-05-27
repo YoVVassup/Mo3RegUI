@@ -18,7 +18,7 @@ namespace Mo3RegUI.Tasks
         {
             if (this.WaitCount != 0)
             {
-                throw new Exception("Existing tasks are running.");
+                throw new Exception("Существующие задачи еще выполняются.");
             }
 
             this.Workers = new List<BackgroundWorker>();
@@ -34,11 +34,11 @@ namespace Mo3RegUI.Tasks
                     this.WaitCount--;
                     if (worker_e.Error is not null)
                     {
-                        this.ReportMessage(task.Task, new TaskMessageEventArgs() { Level = MessageLevel.Critical, Text = "执行失败：" + worker_e.Error.Message });
+                        this.ReportMessage(task.Task, new TaskMessageEventArgs() { Level = MessageLevel.Critical, Text = "Выполнение не удалось: " + worker_e.Error.Message });
                     }
                     else
                     {
-                        this.ReportMessage(task.Task, new TaskMessageEventArgs() { Level = MessageLevel.Info, Text = "执行结束。" });
+                        this.ReportMessage(task.Task, new TaskMessageEventArgs() { Level = MessageLevel.Info, Text = "Завершение выполнения." });
                     }
                     this.TaskCompleted(this, new TaskCompletedEventArgs() { TaskInstance = task });
                 };

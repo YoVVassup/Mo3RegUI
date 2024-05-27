@@ -9,7 +9,7 @@ namespace Mo3RegUI
     }
     public class ProcessMitigationTask : ITask
     {
-        public string Description => "关闭强制映像虚拟化";
+        public string Description => "Отключение принудительного случайного распределения для образов";
         public event EventHandler<TaskMessageEventArgs> ReportMessage;
 
         public void DoWork(ITaskParameter p)
@@ -27,7 +27,7 @@ namespace Mo3RegUI
                 ReportMessage(this, new TaskMessageEventArgs()
                 {
                     Level = MessageLevel.Info,
-                    Text = "Windows 版本过低，无此功能。",
+                    Text = "Версия Windows слишком стара для этой опции.",
                 });
                 return;
             }
@@ -78,7 +78,7 @@ namespace Mo3RegUI
 
                 if (exitCode != 0)
                 {
-                    string message = $"进程返回值 {exitCode}。执行失败。";
+                    string message = $"Процесс возвращает значение {exitCode}. Выполнение не удалось.";
                     ReportMessage(this, new TaskMessageEventArgs() { Level = MessageLevel.Error, Text = message });
                 }
 
@@ -90,7 +90,7 @@ namespace Mo3RegUI
                         ReportMessage(this, new TaskMessageEventArgs()
                         {
                             Level = MessageLevel.Info,
-                            Text = $"强制映像虚拟化 (强制性 ASLR) 为默认开启状态，但已经成功为 {Constants.GameExeName} 关闭了强制映像虚拟化。",
+                            Text = $"Принудительное случайное распределение для образов (обязательный ASLR) включено по умолчанию, но был успешно отключено для {Constants.GameExeName}. ",
                         });
                     }
                     else
@@ -98,7 +98,7 @@ namespace Mo3RegUI
                         ReportMessage(this, new TaskMessageEventArgs()
                         {
                             Level = MessageLevel.Warning,
-                            Text = $"强制映像虚拟化 (强制性 ASLR) 为默认开启状态，并且为 {Constants.GameExeName} 关闭强制映像虚拟化失败。这可能会导致 Ares 无法正常启动。请在 “Windows 安全中心”→“应用和浏览器控制”下找到并关闭“系统设置”选项卡中的“强制映像虚拟化 (强制性 ASLR)”选项，或在“程序设置”选项卡中为游戏文件单独关闭此选项。",
+                            Text = $"Принудительное случайное распределение для образов (обязательный ASLR) включено по умолчанию, и его отключение для {Constants.GameExeName} не удалось. Это может привести к тому, что Ares не сможет загрузиться должным образом. Найдите и отключите «Принудительное случайное распределение для образов (обязательный ASLR) на вкладке «Системные параметры» в разделе «Безопасность Windows» → «Управление приложениями/браузером» или отключите эту опцию отдельно для файлов игры на вкладке «Параметры программы».",
                         });
                     }
                 }
@@ -107,7 +107,7 @@ namespace Mo3RegUI
                     ReportMessage(this, new TaskMessageEventArgs()
                     {
                         Level = MessageLevel.Info,
-                        Text = "强制映像虚拟化 (强制性 ASLR) 为默认关闭状态。",
+                        Text = "Принудительное случайное распределение для образов (обязательный ASLR) отключено по умолчанию.",
                     });
                 }
                 else
@@ -115,7 +115,7 @@ namespace Mo3RegUI
                     ReportMessage(this, new TaskMessageEventArgs()
                     {
                         Level = MessageLevel.Warning,
-                        Text = "未能识别的布尔数字 " + stdOutIsNumeric + "。无法判断选项状态。",
+                        Text = "Не удалось распознать числовое значение " + stdOutIsNumeric + ". Невозможно определить состояние опции.",
                     });
                 }
             }
